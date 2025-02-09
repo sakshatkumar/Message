@@ -132,7 +132,7 @@
         opacity: 0.8;
       }
       100% {
-        transform: translateY(-100vh);
+        transform: translateY(-150vh); /* Extended to ensure it goes off the top */
         opacity: 0;
       }
     }
@@ -173,24 +173,27 @@
       <br><br>
       I know the best things are yet to come, but cherish this moment, be proud of yourself, and most importantly stay the same wonderful person you are! The bestest of things will come to you automatically, just trust the process (well, I did learn it from you) (self promotion: I too came automatically to you XD #bestest).
       <br><br>
-      I can’t guarantee the ride ahead will not be bumpy, but be assured that, however bumpy it may be or it gets , I will stick by you and won't let you fall. Because only one person is allowed to fall and I have already fallen for this prettiest, smartest person I could have.
+      I can’t guarantee the ride ahead will not be bumpy, but be assured that, however bumpy it may be or it gets, I will stick by you and won't let you fall. Because only one person is allowed to fall and I have already fallen for this prettiest, smartest person I could have.
       <br><br>
       Enjoy your last day of internship, hoping it brings you the satisfaction where you breathe and your inner soul smiles ‘I did it’.
-      
     </p>
 
     <!-- Example: Embedding an Image -->
-    <!-- Replace 'your-image.jpg' with the actual file path or URL -->
     <img src="IMG_2862.jpeg" alt="A special memory" class="embedded-media" />
 
+    <!-- New text under the image -->
+    <p style="text-align:center; margin-top:0.5rem; color:#862d59; font-weight:bold;">
+      my 2 most favourites in a single frame, this is my life &lt;3
+    </p>
+
     <!-- Example: Embedding a Video -->
-    <!-- Replace 'your-video.mp4' with the actual file path or URL -->
     <video controls class="embedded-media">
       <source src="Video.mov" type="video/mp4">
       Sorry, your browser doesn't support embedded videos.
     </video>
+
     <p>
-      Haha ab kya karu ? meet me ASAP 
+      Haha ab kya karu? call me ASAP
     </p>
   </div>
 
@@ -212,9 +215,11 @@
 
     // 1. Confetti Launching
     function launchConfetti() {
-      var duration = 3 * 1000; // 3 seconds
+      // Confetti for 5 seconds
+      var duration = 5 * 1000;
       var animationEnd = Date.now() + duration;
-      var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 999 };
+      // Double size using scalar:2
+      var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 999, scalar: 2 };
 
       function randomInRange(min, max) {
         return Math.random() * (max - min) + min;
@@ -242,7 +247,7 @@
     // 2. Floating Hearts & LOVE YOU text
     let floatInterval;
     function startFloatingElements() {
-      // Create a new element (heart or LOVE YOU) every 600ms
+      // Create a new element (heart or LOVE YOU) every 400ms
       floatInterval = setInterval(() => {
         // 20% chance to create "LOVE YOU" text, 80% chance to create heart
         if (Math.random() < 0.2) {
