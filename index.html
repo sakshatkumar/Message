@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>A Special Message for Hotsoo</title>
+  <title>Reveal the Message</title>
   <style>
     /* Basic Reset & Page Styling */
     * {
@@ -20,35 +20,29 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    /* Landing Container */
+    #landing {
       text-align: center;
       padding: 2rem;
-    }
-
-    .message-container {
-      background: rgba(255,255,255, 0.9);
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      padding: 2rem;
       max-width: 600px;
-      margin: 2rem;
-      position: relative;
-      z-index: 1; /* Above hearts */
     }
 
-    h1 {
+    #landing h1 {
+      margin-bottom: 1rem;
       color: #862d59;
-      margin-bottom: 1rem;
     }
 
-    p {
+    #landing p {
+      margin-bottom: 1rem;
       font-size: 1.1rem;
-      color: #333;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      text-align: justify;
     }
 
-    .confetti-btn {
+    .reveal-btn {
       background-color: #f06292;
       border: none;
       padding: 0.8rem 1.5rem;
@@ -59,8 +53,33 @@
       border-radius: 4px;
       transition: background-color 0.3s;
     }
-    .confetti-btn:hover {
+    .reveal-btn:hover {
       background-color: #e91e63;
+    }
+
+    /* Main Message Container (initially hidden) */
+    #main-message {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      max-width: 600px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #main-message h2 {
+      margin-bottom: 1rem;
+      color: #862d59;
+    }
+
+    #main-message p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      text-align: justify;
     }
 
     /* Floating Hearts Animation */
@@ -87,44 +106,45 @@
 </head>
 <body>
 
-  <!-- Hearts container (no visible element, just a place to spawn hearts) -->
+  <!-- Hearts container (invisible div to spawn hearts into) -->
   <div id="hearts-container"></div>
 
-  <div class="message-container">
-    <h1>To Love, Hotsoo</h1>
-
-    <!-- Your heartfelt message here -->
-    <p>
-      First things first, <strong>congratulations!</strong> Now jab teri internship khatam hone aa rahi hai, it’s the best time to look back on the journey and be proud of the feat that you have achieved on your own: teri mehnat, tera work.
-    </p>
-    <p>
-      Surely there would have been ups and downs; I’ve seen a little of your struggles too. But knowing you, you would have learnt so much, and it's the learning that truly matters. These experiences will give you plenty of stories to share!
-    </p>
-    <p>
-      I couldn’t be more proud of you than I am right now, and calling you mine just adds an extra puff to my chest—the real 56 inches Seena <em>(XD)</em>.
-    </p>
-    <p>
-      I know the best things are yet to come, but for now, cherish this moment and be proud of yourself. Most importantly, stay the wonderful person you are! The bestest of things will come to you automatically—just trust the process. (Well, I did learn that from you.) 
-      <br>
-      (Self promotion: I, too, came automatically to you <em>(XD)</em> #bestest).
-    </p>
-    <p>
-      I can't guarantee the ride ahead will always be smooth, but rest assured that however bumpy it gets, I'll be right there with you. I won't let you fall, because only one person is allowed to fall, and I have already fallen for the prettiest, smartest person I could have.
-    </p>
-    <p>
-      Enjoy your last day of internship! I hope it brings you that deep satisfaction where you can breathe and feel your inner soul smiling with, “I did it.”
-    </p>
-
-    <button class="confetti-btn" onclick="launchConfetti()">
-      Celebrate With Confetti!
+  <!-- Landing Section -->
+  <div id="landing">
+    <h1>Hello There!</h1>
+    <p>Something short and sweet here—like “I have a surprise for you!”</p>
+    <button class="reveal-btn" onclick="revealMessage()">
+      Click to Know the Message
     </button>
+  </div>
+
+  <!-- Main Message Section (hidden at first) -->
+  <div id="main-message">
+    <h2>My Special Message Just For You</h2>
+    <p>
+      Put your heartfelt text here. For example:
+      <br><br>
+      “I couldn’t be more proud of the person you are. Thank you for always being there for me, inspiring me, and making me smile. I cherish you and our journey together, and I can’t wait to see what the future holds. Always remember: you are loved, valued, and cherished.”
+    </p>
   </div>
 
   <!-- Confetti Library (Canvas Confetti) -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
   <script>
-    /* 1. Confetti Launching Function */
+    // Reveal the main message, start confetti and hearts
+    function revealMessage() {
+      document.getElementById('landing').style.display = 'none';
+      document.getElementById('main-message').style.display = 'block';
+
+      // Launch confetti once
+      launchConfetti();
+
+      // Start the floating hearts
+      startHearts();
+    }
+
+    // 1. Confetti Launching
     function launchConfetti() {
       var duration = 3 * 1000; // 3 seconds
       var animationEnd = Date.now() + duration;
@@ -153,8 +173,12 @@
       }, 250);
     }
 
-    /* 2. Floating Hearts */
-    const heartsContainer = document.getElementById('hearts-container');
+    // 2. Floating Hearts
+    let heartsInterval;
+    function startHearts() {
+      // Create a new heart every 600ms
+      heartsInterval = setInterval(createHeart, 600);
+    }
 
     function createHeart() {
       const heart = document.createElement('div');
@@ -163,16 +187,13 @@
       heart.style.left = Math.random() * 100 + 'vw';
       // Random animation duration
       heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-      heartsContainer.appendChild(heart);
+      document.getElementById('hearts-container').appendChild(heart);
 
-      // Remove heart from DOM after animation
+      // Remove heart after it floats out of view
       setTimeout(() => {
         heart.remove();
-      }, 5000); // match total animation duration
+      }, 5000);
     }
-
-    // Generate hearts every 600ms (adjust as desired)
-    setInterval(createHeart, 600);
   </script>
 </body>
 </html>
