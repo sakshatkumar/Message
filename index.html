@@ -22,6 +22,17 @@
       align-items: center;
     }
 
+    /* Hearts & LOVE YOU container (invisible div to spawn floating elements) */
+    #hearts-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* So clicks pass through to buttons below */
+      overflow: hidden;
+    }
+
     /* Landing Container */
     #landing {
       text-align: center;
@@ -30,6 +41,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       max-width: 600px;
+      z-index: 2; /* In front of the floating elements */
     }
 
     #landing h1 {
@@ -67,7 +79,8 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       max-width: 600px;
       position: relative;
-      z-index: 1;
+      z-index: 2; /* Ensure text is above floating hearts */
+      margin: 1rem;
     }
 
     #main-message h2 {
@@ -82,16 +95,37 @@
       text-align: justify;
     }
 
-    /* Floating Hearts Animation */
-    .heart {
-      width: 40px;
-      height: 40px;
-      background: url('data:image/svg+xml,%3Csvg width="512" height="512" viewBox="0 0 512 512" fill="%23ff6f91" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M255.5 464c-8.107 0-16.213-3.038-22.386-9.113L76.108 297.642C26.293 247.105 0 197.287 0 144.037 0 76.59 50.59 26 118.037 26c34.57 0 67.105 14.138 90.963 39.77C232.858 40.137 265.393 26 299.963 26 367.41 26 418 76.59 418 144.037c0 53.25-26.293 103.068-76.108 153.606L277.886 454.887A31.508 31.508 0 0 1 255.5 464z"/%3E%3C/svg%3E') center/cover no-repeat;
+    /* Example styling for embedded media */
+    .embedded-media {
+      margin: 1rem auto;
+      display: block;
+      max-width: 100%;
+      border: 2px solid #862d59;
+      border-radius: 8px;
+    }
+
+    /* Floating Hearts & LOVE YOU Animation */
+    .heart, .loveYou {
       position: absolute;
       bottom: -40px;
       animation: floatUp 5s linear infinite;
       opacity: 0.8;
     }
+    .heart {
+      width: 40px;
+      height: 40px;
+      background: url('data:image/svg+xml,%3Csvg width="512" height="512" viewBox="0 0 512 512" fill="%23ff6f91" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M255.5 464c-8.107 0-16.213-3.038-22.386-9.113L76.108 297.642C26.293 247.105 0 197.287 0 144.037 0 76.59 50.59 26 118.037 26c34.57 0 67.105 14.138 90.963 39.77C232.858 40.137 265.393 26 299.963 26 367.41 26 418 76.59 418 144.037c0 53.25-26.293 103.068-76.108 153.606L277.886 454.887A31.508 31.508 0 0 1 255.5 464z"/%3E%3C/svg%3E') center/cover no-repeat;
+    }
+    .loveYou {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #e91e63;
+      text-shadow: 1px 1px 2px #000;
+      padding: 5px 10px;
+      background-color: rgba(255,255,255, 0.8);
+      border-radius: 10px;
+    }
+
     @keyframes floatUp {
       0% {
         transform: translateY(0);
@@ -106,23 +140,23 @@
 </head>
 <body>
 
-  <!-- Hearts container (invisible div to spawn hearts into) -->
+  <!-- Hearts container (invisible div to spawn hearts + "LOVE YOU" text) -->
   <div id="hearts-container"></div>
 
   <!-- Landing Section -->
   <div id="landing">
-    <h1>Hey Hotsooooooo </h1>
-    <p>Koshish to kabootar ki thi , but raat me kaha hi milta :(
-     <br><br>
+    <h1>Hey Hotsooooooo</h1>
+    <p>
+      Koshish to kabootar ki thi, but raat me kaha hi milta :(
+      <br><br>
       So trying a new way to deliver my letter to
       <br><br>
-      my LOVE <3
+      my LOVE &lt;3
     </p>
     <button class="reveal-btn" onclick="revealMessage()">
       #RUKJAAA RUKJAAA XD
       <br><br>
-      click this to READ!! 
-
+      click this to READ!!
     </button>
   </div>
 
@@ -131,28 +165,35 @@
     <h2>My Special Message Just For You</h2>
     <p>
       To Love, Hotsoo,
-
       <br><br>
-      
+      First things first congratulations! Now jab teri internship khatam hone aa rahi hai, it’s the best time to look back on the journey and be proud of the feat that you have achieved on your own—teri mehnat, tera work. Surely there would have been ups and downs; I’ve seen a little of your struggles too. But knowing you, you would have learnt so much and it's the learning that matters. And the stories that you can share from such experiences.
+      <br><br>
+      And I couldn't be more proud of you than I am, and calling you mine is just an extra bit of puff in my chest! The real 56 inches Seena XD.
+      <br><br>
+      I know the best things are yet to come, but cherish this moment, be proud of yourself, and most importantly stay the same wonderful person you are! The bestest of things will come to you automatically, just trust the process (well, I did learn it from you) (self promotion: I too came automatically to you XD #bestest).
+      <br><br>
+      I can’t guarantee the ride ahead will not be bumpy, but be assured that, however bumpy it may be, I will stick by you and won't let you fall. Because only one person is allowed to fall and I have already fallen for the prettiest, smartest person I could have.
+      <br><br>
+      Enjoy your last day of internship, hoping it brings you the satisfaction where you breathe and your inner soul smiles with ‘I did it’.
+    </p>
 
-First things first congratulations! Now jab teri internship khatam hone aa rahi hai , it’s the best time to look back on the journey and be proud of the feat that you have achieved on your own , teri mehnat, tera work , surely there would have been ups and downs, seen a little of your struggles too. But knowing you , you would have learnt so much and it's the learning that matters. And the stories that you can share from such experiences.
-<br><br>
-And I couldn't be more proud of you than I am, and calling you mine is just an extra bit of puff in my chest ! the real 56 inches Seena XD.
-<br><br>
-I know the best things are yet to come, but cherish this moment, be proud of yourself and most importantly stay the same , the wonderful person you are! The bestest of things will come to you automatically , just trust the process ( well i did learn it from you )( self promotion: I too came automatically to you XD #bestest ).
-<br><br>
-I can’t guarantee the ride ahead will not be bumpy, but be assured that, however bumpy it may be, I will stuck by you and won't let you fall. Because only one person is allowed to fall and I have already fallen for the prettiest , smartest person I could have.
-<br><br>
-Enjoy your last day of internship , Hoping it brings you the satisfaction where you breathe and your inner soul smiles with ‘I did it’. 
+    <!-- Example: Embedding an Image -->
+    <!-- Replace 'your-image.jpg' with the actual file path or URL -->
+    <img src="your-image.jpg" alt="A special memory" class="embedded-media" />
 
-      </p>
+    <!-- Example: Embedding a Video -->
+    <!-- Replace 'your-video.mp4' with the actual file path or URL -->
+    <video controls class="embedded-media">
+      <source src="your-video.mp4" type="video/mp4">
+      Sorry, your browser doesn't support embedded videos.
+    </video>
   </div>
 
   <!-- Confetti Library (Canvas Confetti) -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
   <script>
-    // Reveal the main message, start confetti and hearts
+    // Reveal the main message, start confetti and hearts + "LOVE YOU" text
     function revealMessage() {
       document.getElementById('landing').style.display = 'none';
       document.getElementById('main-message').style.display = 'block';
@@ -160,8 +201,8 @@ Enjoy your last day of internship , Hoping it brings you the satisfaction where 
       // Launch confetti once
       launchConfetti();
 
-      // Start the floating hearts
-      startHearts();
+      // Start the floating hearts and "LOVE YOU" text
+      startFloatingElements();
     }
 
     // 1. Confetti Launching
@@ -193,11 +234,18 @@ Enjoy your last day of internship , Hoping it brings you the satisfaction where 
       }, 250);
     }
 
-    // 2. Floating Hearts
-    let heartsInterval;
-    function startHearts() {
-      // Create a new heart every 600ms
-      heartsInterval = setInterval(createHeart, 600);
+    // 2. Floating Hearts & LOVE YOU text
+    let floatInterval;
+    function startFloatingElements() {
+      // Create a new element (heart or LOVE YOU) every 600ms
+      floatInterval = setInterval(() => {
+        // 20% chance to create "LOVE YOU" text, 80% chance to create heart
+        if (Math.random() < 0.2) {
+          createLoveYou();
+        } else {
+          createHeart();
+        }
+      }, 600);
     }
 
     function createHeart() {
@@ -212,6 +260,22 @@ Enjoy your last day of internship , Hoping it brings you the satisfaction where 
       // Remove heart after it floats out of view
       setTimeout(() => {
         heart.remove();
+      }, 5000);
+    }
+
+    function createLoveYou() {
+      const love = document.createElement('div');
+      love.classList.add('loveYou');
+      love.textContent = 'LOVE YOU!';
+      // Random horizontal start position
+      love.style.left = Math.random() * 100 + 'vw';
+      // Random animation duration
+      love.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      document.getElementById('hearts-container').appendChild(love);
+
+      // Remove it after floating out of view
+      setTimeout(() => {
+        love.remove();
       }, 5000);
     }
   </script>
