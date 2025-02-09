@@ -3,43 +3,176 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>A Special Message</title>
+  <title>A Special Message for Hotsoo</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
+    /* Basic Reset & Page Styling */
+    * {
       margin: 0;
-      padding: 40px;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom right, #ffe3e3, #ffc6c7);
+      overflow-x: hidden; /* Hide horizontal scrollbar if hearts move off-screen */
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 2rem;
     }
+
     .message-container {
-      background: #fff;
-      border: 2px solid #ddd;
+      background: rgba(255,255,255, 0.9);
       border-radius: 10px;
-      display: inline-block;
-      padding: 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      padding: 2rem;
+      max-width: 600px;
+      margin: 2rem;
+      position: relative;
+      z-index: 1; /* Above hearts */
     }
+
     h1 {
-      margin-top: 0;
+      color: #862d59;
+      margin-bottom: 1rem;
     }
+
     p {
-      font-size: 1.2rem;
-      margin: 15px 0;
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      text-align: justify;
     }
-    .signature {
-      font-style: italic;
-      color: #555;
+
+    .confetti-btn {
+      background-color: #f06292;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      margin: 1rem 0;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #fff;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .confetti-btn:hover {
+      background-color: #e91e63;
+    }
+
+    /* Floating Hearts Animation */
+    .heart {
+      width: 25px;
+      height: 25px;
+      background: url('data:image/svg+xml,%3Csvg width="512" height="512" viewBox="0 0 512 512" fill="%23ff6f91" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M255.5 464c-8.107 0-16.213-3.038-22.386-9.113L76.108 297.642C26.293 247.105 0 197.287 0 144.037 0 76.59 50.59 26 118.037 26c34.57 0 67.105 14.138 90.963 39.77C232.858 40.137 265.393 26 299.963 26 367.41 26 418 76.59 418 144.037c0 53.25-26.293 103.068-76.108 153.606L277.886 454.887A31.508 31.508 0 0 1 255.5 464z"/%3E%3C/svg%3E') center/cover no-repeat;
+      position: absolute;
+      bottom: -40px;
+      animation: floatUp 5s linear infinite;
+      opacity: 0.8;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Hearts container (no visible element, just a place to spawn hearts) -->
+  <div id="hearts-container"></div>
+
   <div class="message-container">
-    <h1>Hello, [Recipient Name]!</h1>
+    <h1>To Love, Hotsoo</h1>
+
+    <!-- Your heartfelt message here -->
     <p>
-      I just wanted to tell you how special you are to me. 
-      You’ve always been there to support me, and I’m grateful for everything you do.
+      First things first, <strong>congratulations!</strong> Now jab teri internship khatam hone aa rahi hai, it’s the best time to look back on the journey and be proud of the feat that you have achieved on your own: teri mehnat, tera work.
     </p>
-    <p class="signature">— [Your Name]</p>
+    <p>
+      Surely there would have been ups and downs; I’ve seen a little of your struggles too. But knowing you, you would have learnt so much, and it's the learning that truly matters. These experiences will give you plenty of stories to share!
+    </p>
+    <p>
+      I couldn’t be more proud of you than I am right now, and calling you mine just adds an extra puff to my chest—the real 56 inches Seena <em>(XD)</em>.
+    </p>
+    <p>
+      I know the best things are yet to come, but for now, cherish this moment and be proud of yourself. Most importantly, stay the wonderful person you are! The bestest of things will come to you automatically—just trust the process. (Well, I did learn that from you.) 
+      <br>
+      (Self promotion: I, too, came automatically to you <em>(XD)</em> #bestest).
+    </p>
+    <p>
+      I can't guarantee the ride ahead will always be smooth, but rest assured that however bumpy it gets, I'll be right there with you. I won't let you fall, because only one person is allowed to fall, and I have already fallen for the prettiest, smartest person I could have.
+    </p>
+    <p>
+      Enjoy your last day of internship! I hope it brings you that deep satisfaction where you can breathe and feel your inner soul smiling with, “I did it.”
+    </p>
+
+    <button class="confetti-btn" onclick="launchConfetti()">
+      Celebrate With Confetti!
+    </button>
   </div>
+
+  <!-- Confetti Library (Canvas Confetti) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <script>
+    /* 1. Confetti Launching Function */
+    function launchConfetti() {
+      var duration = 3 * 1000; // 3 seconds
+      var animationEnd = Date.now() + duration;
+      var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 999 };
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      var interval = setInterval(function() {
+        var timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        var particleCount = 50 * (timeLeft / duration);
+        // Launch confetti from random positions
+        confetti(Object.assign({}, defaults, {
+          particleCount,
+          origin: {
+            x: randomInRange(0.1, 0.9),
+            y: Math.random() - 0.2
+          }
+        }));
+      }, 250);
+    }
+
+    /* 2. Floating Hearts */
+    const heartsContainer = document.getElementById('hearts-container');
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      // Random horizontal start position
+      heart.style.left = Math.random() * 100 + 'vw';
+      // Random animation duration
+      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      heartsContainer.appendChild(heart);
+
+      // Remove heart from DOM after animation
+      setTimeout(() => {
+        heart.remove();
+      }, 5000); // match total animation duration
+    }
+
+    // Generate hearts every 600ms (adjust as desired)
+    setInterval(createHeart, 600);
+  </script>
 </body>
 </html>
