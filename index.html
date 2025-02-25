@@ -8,29 +8,39 @@
         /* General Styling */
         body {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #232526, #414345);
-            color: white;
+            background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+            color: #444;
             font-family: 'Poppins', sans-serif;
             text-align: center;
             transition: opacity 0.5s ease-in-out;
         }
 
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 15px;
+        /* Message Card */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
             max-width: 80%;
+            min-width: 320px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            max-width: 100%;
             opacity: 0.9;
+            line-height: 1.5;
         }
 
         /* Button Styling */
         .button {
             padding: 12px 25px;
             font-size: 1.2rem;
-            background: #ff5733;
+            background: #ff6b81;
             color: white;
             border: none;
             cursor: pointer;
@@ -38,6 +48,7 @@
             transition: background 0.3s, transform 0.3s;
             font-weight: bold;
             box-shadow: 0px 4px 10px rgba(255, 87, 51, 0.3);
+            margin-top: 15px;
         }
 
         .button:hover {
@@ -51,24 +62,24 @@
 
         /* Image Styling */
         img {
-            width: 280px;
+            width: 250px;
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
 
         /* Floating Image Animation */
         .floating-image {
             position: absolute;
-            width: 250px;
+            width: 220px;
             opacity: 1;
-            transition: transform 3s ease-in-out, opacity 2s ease-in-out;
-            filter: drop-shadow(0px 10px 20px rgba(255, 255, 255, 0.3));
+            transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+            filter: drop-shadow(0px 5px 15px rgba(255, 120, 120, 0.4));
         }
 
         .disappear {
-            transform: translateY(-250px);
+            transform: translateY(-250px) scale(0.8);
             opacity: 0;
         }
 
@@ -86,25 +97,25 @@
 <body class="fade-in">
 
     <!-- First Page -->
-    <div id="page1">
+    <div id="page1" class="card">
         <img src="Regret.JPG" alt="Diary Image">
-        <h1>You know which diary this is! And you also know how much I hate to regret!</h1>
-        <h1>Do you think I will make the person I love the most regret anything, that too about me?</h1>
-        <h1>Click below if you don't want to regret!</h1>
+        <h1>📖 You know which diary this is! And you also know how much I hate to regret!</h1>
+        <h1>💖 Do you think I will make the person I love the most regret anything, that too about me?</h1>
+        <h1>✨ Click below if you don’t want to regret! ✨</h1>
         <button class="button" onclick="showNewPage()">Click Here</button>
     </div>
 
     <!-- Second Page (Hidden Initially) -->
-    <div id="page2" class="hidden">
-        <h1>Life is never going to be all sunshine and no rains, there will be tough times and happy times.</h1>
-        <h1>But something that will be constant will be this...</h1>
+    <div id="page2" class="card hidden">
+        <h1>🌦️ Life is never going to be all sunshine and no rains, there will be tough times and happy times. 💫</h1>
+        <h1>But something that will be constant will be this... 💞</h1>
         <button class="button" onclick="showFloatingImage()">Click Here</button>
         
         <!-- Floating Image -->
         <img id="floatingImg" class="floating-image hidden" src="Next.JPG" alt="Floating Image">
 
         <!-- Final Message (Hidden Initially) -->
-        <h1 id="finalMessage" class="hidden">[Your next message here]</h1>
+        <h1 id="finalMessage" class="hidden">💌 And no matter what happens, this love will always stay! 💖</h1>
     </div>
 
     <script>
@@ -114,23 +125,4 @@
         }
 
         function showFloatingImage() {
-            const floatingImg = document.getElementById('floatingImg');
-            const finalMessage = document.getElementById('finalMessage');
-
-            floatingImg.classList.remove('hidden');
-            
-            // Start the floating animation
-            setTimeout(() => {
-                floatingImg.classList.add('disappear');
-            }, 100); 
-
-            // After animation ends, hide image and show the final message
-            setTimeout(() => {
-                floatingImg.classList.add('hidden');
-                finalMessage.classList.remove('hidden');
-            }, 3000); // Adjust timing based on animation duration
-        }
-    </script>
-
-</body>
-</html>
+            const floatingImg = document.getElemen
