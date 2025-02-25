@@ -18,7 +18,7 @@
             transition: opacity 0.5s ease-in-out;
         }
         h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
             max-width: 80%;
         }
@@ -30,11 +30,11 @@
             border: none;
             cursor: pointer;
             border-radius: 5px;
-            transition: background 0.3s;
-            margin-top: 20px;
+            transition: background 0.3s, transform 0.3s;
         }
         .button:hover {
             background-color: #e04e2a;
+            transform: scale(1.05);
         }
         .hidden {
             display: none;
@@ -46,13 +46,23 @@
             box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
             margin-bottom: 20px;
         }
+        .floating-image {
+            position: absolute;
+            width: 200px;
+            opacity: 1;
+            transition: transform 3s ease-in-out, opacity 2s ease-in-out;
+        }
+        .disappear {
+            transform: translateY(-200px);
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
 
     <!-- First Page -->
     <div id="page1">
-        <img src="Regret.JPG" alt="Diary Image">
+        <img src="diary_image.jpg" alt="Diary Image">
         <h1>You know which diary this is! And you also know how much I hate to regret!</h1>
         <h1>Do you think I will make the person I love the most regret anything, that too about me?</h1>
         <h1>Click below if you don't want to regret!</h1>
@@ -61,14 +71,39 @@
 
     <!-- Second Page (Hidden Initially) -->
     <div id="page2" class="hidden">
-        <h1>No regrets, just keep moving forward!</h1>
-        <img src="path-to-your-second-image.jpg" alt="Motivational Image">
+        <h1>Life is never going to be all sunshine and no rains, there will be tough times and happy times.</h1>
+        <h1>But something that will be constant will be this...</h1>
+        <button class="button" onclick="showFloatingImage()">Click Here</button>
+        
+        <!-- Floating Image -->
+        <img id="floatingImg" class="floating-image hidden" src="constant_image.jpg" alt="Floating Image">
+
+        <!-- Final Message (Hidden Initially) -->
+        <h1 id="finalMessage" class="hidden">[Your next message here]</h1>
     </div>
 
     <script>
         function showNewPage() {
             document.getElementById('page1').classList.add('hidden');
             document.getElementById('page2').classList.remove('hidden');
+        }
+
+        function showFloatingImage() {
+            const floatingImg = document.getElementById('floatingImg');
+            const finalMessage = document.getElementById('finalMessage');
+
+            floatingImg.classList.remove('hidden');
+            
+            // Start the floating animation
+            setTimeout(() => {
+                floatingImg.classList.add('disappear');
+            }, 100); 
+
+            // After animation ends, hide image and show the final message
+            setTimeout(() => {
+                floatingImg.classList.add('hidden');
+                finalMessage.classList.remove('hidden');
+            }, 3000); // Adjust timing based on animation duration
         }
     </script>
 
