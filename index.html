@@ -73,4 +73,87 @@
             width: 220px;
             opacity: 1;
             transition: transform 2s ease-in-out, opacity 2s ease-in-out;
-            filter: drop-shadow(0px
+            filter: drop-shadow(0px 5px 15px rgba(255, 120, 120, 0.4));
+        }
+
+        .disappear {
+            transform: translateY(-250px) scale(0.8);
+            opacity: 0;
+        }
+
+        /* Page Transitions */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Hide Second Page by Default */
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+        }
+    </style>
+</head>
+<body class="fade-in">
+
+    <!-- First Page -->
+    <div id="page1" class="card">
+        <img src="Regret.JPG" alt="Diary Image">
+        <h1>📖 You know which diary this is! And you also know how much I hate to regret!</h1>
+        <h1>💖 Do you think I will make the person I love the most regret anything, that too about me?</h1>
+        <h1>✨ Click below if you don’t want to regret! ✨</h1>
+        <button class="button" onclick="showNewPage()">Click Here</button>
+    </div>
+
+    <!-- Second Page (Initially Hidden) -->
+    <div id="page2" class="card hidden">
+        <h1>🌦️ Life is never going to be all sunshine and no rains, there will be tough times and happy times. 💫</h1>
+        <h1>But something that will be constant will be this... 💞</h1>
+        <button class="button" onclick="showFloatingImage()">Click Here</button>
+        
+        <!-- Floating Image -->
+        <img id="floatingImg" class="floating-image hidden" src="Next.JPG" alt="Floating Image">
+
+        <!-- Final Message (Hidden Initially) -->
+        <h1 id="finalMessage" class="hidden">💌 And no matter what happens, this love will always stay! 💖</h1>
+    </div>
+
+    <script>
+        function showNewPage() {
+            // Hide first page
+            document.getElementById('page1').style.opacity = "0";
+            document.getElementById('page1').style.visibility = "hidden";
+
+            // Show second page
+            setTimeout(() => {
+                document.getElementById('page2').style.opacity = "1";
+                document.getElementById('page2').style.visibility = "visible";
+            }, 500); // Smooth transition delay
+        }
+
+        function showFloatingImage() {
+            const floatingImg = document.getElementById('floatingImg');
+            const finalMessage = document.getElementById('finalMessage');
+
+            floatingImg.classList.remove('hidden');
+
+            // Start the floating animation
+            setTimeout(() => {
+                floatingImg.classList.add('disappear');
+            }, 100); 
+
+            // After animation ends, hide image and show the final message
+            setTimeout(() => {
+                floatingImg.classList.add('hidden');
+                finalMessage.classList.remove('hidden');
+            }, 2500); // Adjust timing based on animation duration
+        }
+    </script>
+
+</body>
+</html>
