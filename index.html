@@ -26,6 +26,8 @@
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
             max-width: 80%;
             min-width: 320px;
+            opacity: 1;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
         }
 
         h1 {
@@ -56,10 +58,6 @@
             transform: scale(1.05);
         }
 
-        .hidden {
-            display: none;
-        }
-
         /* Image Styling */
         img {
             width: 250px;
@@ -75,54 +73,4 @@
             width: 220px;
             opacity: 1;
             transition: transform 2s ease-in-out, opacity 2s ease-in-out;
-            filter: drop-shadow(0px 5px 15px rgba(255, 120, 120, 0.4));
-        }
-
-        .disappear {
-            transform: translateY(-250px) scale(0.8);
-            opacity: 0;
-        }
-
-        /* Page Transitions */
-        .fade-in {
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
-</head>
-<body class="fade-in">
-
-    <!-- First Page -->
-    <div id="page1" class="card">
-        <img src="Regret.JPG" alt="Diary Image">
-        <h1>📖 You know which diary this is! And you also know how much I hate to regret!</h1>
-        <h1>💖 Do you think I will make the person I love the most regret anything, that too about me?</h1>
-        <h1>✨ Click below if you don’t want to regret! ✨</h1>
-        <button class="button" onclick="showNewPage()">Click Here</button>
-    </div>
-
-    <!-- Second Page (Hidden Initially) -->
-    <div id="page2" class="card hidden">
-        <h1>🌦️ Life is never going to be all sunshine and no rains, there will be tough times and happy times. 💫</h1>
-        <h1>But something that will be constant will be this... 💞</h1>
-        <button class="button" onclick="showFloatingImage()">Click Here</button>
-        
-        <!-- Floating Image -->
-        <img id="floatingImg" class="floating-image hidden" src="Next.JPG" alt="Floating Image">
-
-        <!-- Final Message (Hidden Initially) -->
-        <h1 id="finalMessage" class="hidden">💌 And no matter what happens, this love will always stay! 💖</h1>
-    </div>
-
-    <script>
-        function showNewPage() {
-            document.getElementById('page1').classList.add('hidden');
-            document.getElementById('page2').classList.remove('hidden');
-        }
-
-        function showFloatingImage() {
-            const floatingImg = document.getElemen
+            filter: drop-shadow(0px
