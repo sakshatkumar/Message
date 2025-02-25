@@ -5,60 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>No Regrets</title>
     <style>
+        /* General Styling */
         body {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #222;
+            background: linear-gradient(135deg, #232526, #414345);
             color: white;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             text-align: center;
             transition: opacity 0.5s ease-in-out;
         }
+
         h1 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 15px;
             max-width: 80%;
+            opacity: 0.9;
         }
+
+        /* Button Styling */
         .button {
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-size: 1.2rem;
-            background-color: #ff5733;
+            background: #ff5733;
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 30px;
             transition: background 0.3s, transform 0.3s;
+            font-weight: bold;
+            box-shadow: 0px 4px 10px rgba(255, 87, 51, 0.3);
         }
+
         .button:hover {
-            background-color: #e04e2a;
+            background: #e04e2a;
             transform: scale(1.05);
         }
+
         .hidden {
             display: none;
         }
+
+        /* Image Styling */
         img {
-            width: 250px;
+            width: 280px;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
             margin-bottom: 20px;
         }
+
+        /* Floating Image Animation */
         .floating-image {
             position: absolute;
-            width: 200px;
+            width: 250px;
             opacity: 1;
             transition: transform 3s ease-in-out, opacity 2s ease-in-out;
+            filter: drop-shadow(0px 10px 20px rgba(255, 255, 255, 0.3));
         }
+
         .disappear {
-            transform: translateY(-200px);
+            transform: translateY(-250px);
             opacity: 0;
+        }
+
+        /* Page Transitions */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
-<body>
+<body class="fade-in">
 
     <!-- First Page -->
     <div id="page1">
