@@ -171,13 +171,7 @@
         <button class="button" onclick="showFloatingImage()">Click Here</button>
         <img id="floatingImg" class="floating-image" src="Next.JPG" alt="Floating Image">
         <h1 id="finalMessage" class="hidden">
-            I have dedicated easily 2 years, I waited to find the best one for me, and that is you, Hotsoo! <br><br> 
-            The level of understanding and similarities—I have realized I am already **Aatmasamarpit** to you.  
-            <br><br>
-            I know I am not perfect, but I want to be **for you**. Break me, mold me, customize me! Make me yours, Hotsoo!!  
-            <br><br>
-            My only concern is, apan saath rehte hai to **time flies** like anything. But I know how to fix it!  
-            I need you in **all my lifetimes**—that’s the only solution, and I want you to stay! 💖
+            I have dedicated easily 2 years, I waited to find the best one for me, and that is you, Hotsoo! 💖
         </h1>
         <button class="button" onclick="showThirdPage()">And why am I a catch? Click here to find out!</button>
     </div>
@@ -205,6 +199,29 @@
             setTimeout(() => {
                 document.getElementById('page2').style.opacity = "1";
                 document.getElementById('page2').style.visibility = "visible";
+            }, 500);
+        }
+
+        function showFloatingImage() {
+            const floatingImg = document.getElementById('floatingImg');
+            const finalMessage = document.getElementById('finalMessage');
+            floatingImg.classList.add('appear');
+            setTimeout(() => {
+                floatingImg.classList.add('disappear');
+            }, 3000);
+            setTimeout(() => {
+                floatingImg.classList.remove('appear');
+                floatingImg.style.visibility = "hidden";
+                finalMessage.classList.remove('hidden');
+            }, 4500);
+        }
+
+        function showThirdPage() {
+            document.getElementById('page2').style.opacity = "0";
+            document.getElementById('page2').style.visibility = "hidden";
+            setTimeout(() => {
+                document.getElementById('page3').style.opacity = "1";
+                document.getElementById('page3').style.visibility = "visible";
             }, 500);
         }
     </script>
