@@ -149,8 +149,11 @@
     <!-- First Page -->
     <div id="page1" class="card">
         <img src="Regret.JPG" alt="Diary Image">
-        <h1>You know which diary this is! And you also know how much I hate to regret!</h1>
-        <button class="button" onclick="showNewPage()">Click Here</button>
+        <h1>You know which diary this is! And you also know how much I hate to regret!
+        <br>I do not want to regret and i can't make the person i love the most regret anything too ,
+        Just trust US and believe in me!</h1>
+        
+        <button class="button" onclick="showNewPage()">Click here to NOT regret XD</button>
     </div>
 
     <!-- Second Page -->
@@ -197,18 +200,13 @@
             }, 500);
         }
 
-        function showFloatingImage() {
-            const floatingImg = document.getElementById('floatingImg');
-            const finalMessage = document.getElementById('finalMessage');
-            floatingImg.classList.add('appear');
+        function showThirdPage() {
+            document.getElementById('page2').style.opacity = "0";
+            document.getElementById('page2').style.visibility = "hidden";
             setTimeout(() => {
-                floatingImg.classList.add('disappear');
-            }, 3000);
-            setTimeout(() => {
-                floatingImg.classList.remove('appear');
-                floatingImg.style.visibility = "hidden";
-                finalMessage.classList.remove('hidden');
-            }, 4500);
+                document.getElementById('page3').style.opacity = "1";
+                document.getElementById('page3').style.visibility = "visible";
+            }, 500);
         }
     </script>
 
