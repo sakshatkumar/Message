@@ -118,15 +118,18 @@
 
     <!-- Second Page (Initially Hidden) -->
     <div id="page2" class="card hidden">
-        <h1>🌦️ Life is never going to be all sunshine and no rains, there will be tough times and happy times. 💫</h1>
-        <h1>But something that will be constant will be this... 💞</h1>
+        <h1> Life hai yaar!!  Ups and Downs nahi aaenge to maza kaese aaega, memories , stories kaha se aaengi!
+            there will be tough times and happy times. </h1>
+        <h1>But something that will be constant is click below to find out</h1>
         <button class="button" onclick="showFloatingImage()">Click Here</button>
         
         <!-- Floating Image -->
         <img id="floatingImg" class="floating-image" src="Next.JPG" alt="Floating Image">
 
         <!-- Final Message (Hidden Initially) -->
-        <h1 id="finalMessage" class="hidden">💌 And no matter what happens, this love will always stay! 💖</h1>
+        <h1 id="finalMessage" class="hidden"> I have dedicated easily 2 years, I waited to find the best one for me , and that is you 
+    Hotsoo!
+        </h1>
     </div>
 
     <script>
@@ -152,14 +155,14 @@
             // Start the floating animation after short delay
             setTimeout(() => {
                 floatingImg.classList.add('disappear');
-            }, 1000); 
+            }, 3000); 
 
             // After animation ends, hide image and show the final message
             setTimeout(() => {
                 floatingImg.classList.remove('appear');
                 finalMessage.classList.remove('hidden');
                 finalMessage.style.opacity = "1";
-            }, 2500); // Adjust timing based on animation duration
+            }, 4500); // Adjust timing based on animation duration
         }
     </script>
 
